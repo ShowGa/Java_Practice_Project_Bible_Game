@@ -15,14 +15,21 @@ public class Main extends JPanel implements KeyListener {
     public static final int HEIGHT = 500;
     public static final int ROW = HEIGHT / CELL;
     public static final int COL = WIDTH / CELL;
+    private int level;
 
     Moses moses;
     public static GameView gameView;
 
     public Main() {
-        moses = new Moses(1, 1);
-        gameView = new DisasterView();
+        resetGame(new DisasterView());
         addKeyListener(this);
+    }
+
+    public void resetGame(GameView view) {
+        moses = new Moses(1, 1);
+        gameView = view;
+        repaint();
+        level = 1;
     }
 
 
@@ -53,22 +60,54 @@ public class Main extends JPanel implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
                 if (mosesPoint.y > 1) {
-                    mosesPoint.y --;
+                    String result = moses.overlap(mosesPoint.x, mosesPoint.y - 1);
+                    if (result.equals("Die")) {
+                        JOptionPane.showMessageDialog(this, "You died. Please try again.");
+                        resetGame(new DisasterView());
+                        return;
+                    }
+                    if (!result.equals("Cannot move")) {
+                        mosesPoint.y --;
+                    }
                 }
                 break;
             case KeyEvent.VK_DOWN:
                 if (mosesPoint.y < 10) {
-                    mosesPoint.y ++;
+                    String result = moses.overlap(mosesPoint.x, mosesPoint.y + 1);
+                    if (result.equals("Die")) {
+                        JOptionPane.showMessageDialog(this, "You died. Please try again.");
+                        resetGame(new DisasterView());
+                        return;
+                    }
+                    if (!result.equals("Cannot move")) {
+                        mosesPoint.y ++;
+                    }
                 }
                 break;
             case KeyEvent.VK_LEFT:
                 if (mosesPoint.x > 1) {
-                    mosesPoint.x --;
+                    String result = moses.overlap(mosesPoint.x - 1, mosesPoint.y);
+                    if (result.equals("Die")) {
+                        JOptionPane.showMessageDialog(this, "You died. Please try again.");
+                        resetGame(new DisasterView());
+                        return;
+                    }
+                    if (!result.equals("Cannot move")) {
+                        mosesPoint.x --;
+                    }
                 }
                 break;
             case KeyEvent.VK_RIGHT:
                 if (mosesPoint.x < 10) {
-                    mosesPoint.x ++;
+                    String result = moses.overlap(mosesPoint.x + 1, mosesPoint.y);
+                    if (result.equals("Die")) {
+                        JOptionPane.showMessageDialog(this, "You died. Please try again.");
+                        resetGame(new DisasterView());
+                        return;
+                    }
+                    if (!result.equals("Cannot move")) {
+                        mosesPoint.x ++;
+                    }
                 }
                 break;
         }

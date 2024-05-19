@@ -10,6 +10,23 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class DisasterView extends GameView {
+
+    public ArrayList<Ice> getIces() {
+        return ices;
+    }
+
+    public ArrayList<Bug> getBugs() {
+        return bugs;
+    }
+
+    public ArrayList<Tombstone> getTombstones() {
+        return tombstones;
+    }
+
+    public ArrayList<Frog> getFrogs() {
+        return frogs;
+    }
+
     private ArrayList<Bug> bugs = new ArrayList<>();
     private ArrayList<Ice> ices = new ArrayList<>();
     private ArrayList<Tombstone> tombstones = new ArrayList<>();
