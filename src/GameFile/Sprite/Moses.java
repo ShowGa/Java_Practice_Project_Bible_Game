@@ -7,4 +7,10 @@ public class Moses extends Sprite {
         setPosition(x, y);
         img = new ImageIcon("Moses.png");
     }
+
+
+    @Override
+    public String overlap(int x, int y) {
+        return "";
+    }
 }

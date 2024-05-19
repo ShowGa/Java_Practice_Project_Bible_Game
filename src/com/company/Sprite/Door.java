@@ -1,4 +1,4 @@
-package GameFile.Sprite;
+package com.company.Sprite;
 
 import javax.swing.*;
 
@@ -11,6 +11,6 @@ public class Door extends Sprite{
 
     @Override
     public String overlap(int x, int y) {
-        return "";
+        return null;
     }
 }
