@@ -1,6 +1,6 @@
-package com.company.Sprite.RedSeaViewSprite;
+package GameFile.Sprite.RedSeaViewSprite;
 
-import com.company.Sprite.Sprite;
+import GameFile.Sprite.Sprite;
 
 import javax.swing.*;
 
@@ -12,6 +12,6 @@ public class Anubis extends Sprite {
 
     @Override
     public String overlap(int x, int y) {
-        return null;
+        return "";
     }
 }
